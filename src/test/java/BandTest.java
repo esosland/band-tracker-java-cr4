@@ -65,5 +65,16 @@ public class BandTest {
     assertEquals(null, Band.find(myBandId));
   }
 
+  @Test
+  public void addVenue_addVenueToBand() {
+    Venue myVenue = new Venue("Mississippi Studios");
+    myVenue.save();
+    Band myBand = new Band("Jurassic Five");
+    myBand.save();
+    myBand.addVenue(myVenue);
+    Venue savedVenue = myBand.getVenues().get(0);
+    assertTrue(myVenue.equals(savedVenue));
+  }
+
 
 }
