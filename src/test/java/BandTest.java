@@ -40,5 +40,13 @@ public class BandTest {
     assertEquals(1, Band.all().size());
   }
 
+  @Test
+  public void find_findsBandInDatabase_true() {
+    Band myBand = new Band("People Under The Stairs");
+    myBand.save();
+    Band savedBand = Band.find(myBand.getId());
+    assertTrue(myBand.equals(savedBand));
+  }
+
 
 }

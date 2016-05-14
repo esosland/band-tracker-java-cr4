@@ -14,6 +14,10 @@ public class Band {
     return name;
   }
 
+  public int getId() {
+    return id;
+  }
+
   public static List<Band> all() {
     String sql = "SELECT * FROM bands";
     try(Connection con = DB.sql2o.open()) {
@@ -27,7 +31,8 @@ public class Band {
       return false;
     } else {
       Band newBand = (Band) otherBand;
-      return this.getName().equals(newBand.getName());
+      return this.getName().equals(newBand.getName()) &&
+             this.getId() == (newBand.getId());
     }
   }
 
@@ -38,6 +43,16 @@ public class Band {
       .addParameter("name", this.name)
       .executeUpdate()
       .getKey();
+    }
+  }
+
+  public static Band find(int id) {
+    try(Connection con = DB.sql2o.open()) {
+      String sql = "SELECT * FROM bands WHERE id = :id";
+      Band band = con.createQuery(sql)
+        .addParameter("id", id)
+        .executeAndFetchFirst(Band.class);
+      return band;
     }
   }
 
