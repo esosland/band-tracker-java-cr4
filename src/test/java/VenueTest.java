@@ -1,0 +1,17 @@
+import org.sql2o.*;
+import org.junit.*;
+import static org.junit.Assert.*;
+import java.util.Arrays;
+import java.util.List;
+
+public class VenueTest {
+
+  @Rule
+  public DatabaseRule database = new DatabaseRule();
+
+  @Test
+  public void Venue_instantiatesCorrectly_true() {
+    Venue myVenue = new Venue("The Alhambra");
+    assertEquals(true, myVenue instanceof Venue);
+  }
+}
