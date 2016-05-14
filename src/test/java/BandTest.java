@@ -21,5 +21,10 @@ public class BandTest {
     assertEquals("Anderson Paak", myBand.getName());
   }
 
+  @Test
+  public void all_emptyAtFirst() {
+    assertEquals(Band.all().size(), 0);
+  }
+
 
 }
