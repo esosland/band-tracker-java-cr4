@@ -76,5 +76,16 @@ public class BandTest {
     assertTrue(myVenue.equals(savedVenue));
   }
 
+  @Test
+  public void getVenues_returnsAllVenues_emptyList() {
+    Venue myVenue = new Venue("Doug Fir Lounge");
+    myVenue.save();
+    Band myBand = new Band("Janelle Monae");
+    myBand.save();
+    List savedVenues = myBand.getVenues();
+    assertEquals(0, savedVenues.size());
+  }
+
+
 
 }

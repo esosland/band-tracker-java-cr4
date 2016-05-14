@@ -40,6 +40,14 @@ public class VenueTest {
     assertEquals(1, Venue.all().size());
   }
 
+  @Test
+  public void find_findsVenueInDatabase_true() {
+    Venue myVenue = new Venue("Hawthorne Theater");
+    myVenue.save();
+    Venue savedVenue = Venue.find(myVenue.getId());
+    assertTrue(myVenue.equals(savedVenue));
+  }
+
 
 
 }
