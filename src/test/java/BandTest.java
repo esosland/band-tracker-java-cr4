@@ -56,5 +56,14 @@ public class BandTest {
     assertEquals("Santigold", Band.find(myBand.getId()).getName());
   }
 
+  @Test
+  public void delete_deletesBandName_true() {
+    Band myBand = new Band("The Internet");
+    myBand.save();
+    int myBandId = myBand.getId();
+    myBand.delete();
+    assertEquals(null, Band.find(myBandId));
+  }
+
 
 }
