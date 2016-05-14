@@ -26,5 +26,12 @@ public class BandTest {
     assertEquals(Band.all().size(), 0);
   }
 
+  @Test
+  public void equals_returnsTrueIfBandsAreTheSame_true() {
+    Band firstBand = new Band("Kendrick Lamar");
+    Band secondBand = new Band("Kendrick Lamar");
+    assertTrue(firstBand.equals(secondBand));
+  }
+
 
 }
