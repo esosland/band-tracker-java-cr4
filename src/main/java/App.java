@@ -74,6 +74,13 @@ public class App {
       return null;
     });
 
+    get("/venues", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("venues", Venue.all());
+      model.put("template", "templates/venues.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
 
 
 

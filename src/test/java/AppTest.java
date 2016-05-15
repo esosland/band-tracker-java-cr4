@@ -86,4 +86,11 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("Doug Fir Lounge");
   }
 
+  @Test
+  public void allVenuesPageIsDisplayed() {
+    goTo("http://localhost:4567/");
+    click("a", withText("View All Venues"));
+    assertThat(pageSource().contains("All Venues"));
+  }
+
 }
