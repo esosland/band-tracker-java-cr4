@@ -66,15 +66,6 @@ public class Band {
     }
   }
 
-  public void delete() {
-    try(Connection con = DB.sql2o.open()) {
-      String sql = "DELETE FROM bands WHERE id = :id";
-      con.createQuery(sql)
-      .addParameter("id", this.id)
-      .executeUpdate();
-    }
-  }
-
   public void addVenue(Venue venue) {
     try(Connection con = DB.sql2o.open()) {
       String sql = "INSERT INTO bands_venues (band_id, venue_id) VALUES (:band_id, :venue_id)";
@@ -99,5 +90,20 @@ public class Band {
       return venues;
     }
   }
+
+  public void delete() {
+    try(Connection con = DB.sql2o.open()) {
+      String deleteQuery = "DELETE FROM bands WHERE id = :id";
+        con.createQuery(deleteQuery)
+          .addParameter("id", this.id)
+          .executeUpdate();
+
+      String joinDeleteQuery = "DELETE FROM bands_venues WHERE band_id = :band_id";
+        con.createQuery(joinDeleteQuery)
+          .addParameter("band_id", this.id)
+          .executeUpdate();
+    }
+  }
+
 
 }
