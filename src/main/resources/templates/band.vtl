@@ -1,3 +1,9 @@
 <h1>$band.getName()<h1>
 
+  <form action="/bands/$band.getId()/update" method="post">
+    <input id="update" name="update" type="text">
+
+    <button type="submit" class="btn btn-success" id="update-submit">Update Band Name</button>
+  </form>
+
 <a href="/" class="btn btn-success">Home</a>

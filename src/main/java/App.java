@@ -45,6 +45,16 @@ public class App {
       return null;
     });
 
+    post("/bands/:id/update", (request, response) -> {
+      int bandId = Integer.parseInt(request.params("id"));
+      Band band = Band.find(bandId);
+      String newName = request.queryParams("update");
+      band.update(newName);
+      response.redirect("/bands/" + band.getId());
+      return null;
+    });
+
+
 
 
 
