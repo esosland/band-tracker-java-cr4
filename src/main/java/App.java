@@ -54,6 +54,15 @@ public class App {
       return null;
     });
 
+    post("/bands/:id/delete", (request, response) -> {
+      int bandId = Integer.parseInt(request.params("id"));
+      Band band = Band.find(bandId);
+      band.delete();
+      response.redirect("/bands");
+      return null;
+    });
+
+
 
 
 

@@ -7,6 +7,7 @@ import org.fluentlenium.adapter.FluentTest;
 import org.junit.ClassRule;
 import static org.fluentlenium.core.filter.FilterConstructor.*;
 import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.Assert.*;
 
 public class AppTest extends FluentTest {
   public WebDriver webDriver = new HtmlUnitDriver();
@@ -60,6 +61,16 @@ public class AppTest extends FluentTest {
     fill("#update").with("Yasiin Bey");
     submit("#update-submit");
     assertThat(pageSource().contains("Yasiin Bey"));
+  }
+
+  @Test
+  public void bandIsDeleted() {
+    Band testBand = new Band("GZA");
+    testBand.save();
+    String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
+    goTo(url);
+    submit("#delete-band");
+    assertFalse(pageSource().contains("GZA"));
   }
 
 }
