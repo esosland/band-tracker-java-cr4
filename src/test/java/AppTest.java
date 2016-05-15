@@ -35,13 +35,13 @@ public class AppTest extends FluentTest {
     assertThat(pageSource().contains("All Bands"));
   }
 
-  // @Test
-  // public void individualBandPageIsDisplayed() {
-  //   Band testBand = new Band("People Under The Stairs");
-  //   testBand.save();
-  //   String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
-  //   goTo(url);
-  //   assertThat(pageSource()).contains("People Under The Stairs");
-  // }
+  @Test
+  public void individualBandPageIsDisplayed() {
+    Band testBand = new Band("People Under The Stairs");
+    testBand.save();
+    String url = String.format("http://localhost:4567/bands/%d", testBand.getId());
+    goTo(url);
+    assertThat(pageSource()).contains("People Under The Stairs");
+  }
 
 }

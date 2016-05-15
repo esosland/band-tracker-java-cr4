@@ -22,5 +22,17 @@ public class App {
         model.put("template", "templates/bands.vtl");
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
-    }
+
+    get("/bands/:id", (request, reponse) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Band band = Band.find(Integer.parseInt(request.params(":id")));
+      model.put("band", band);
+      model.put("template", "templates/band.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
+
+
+    
   }
+}
