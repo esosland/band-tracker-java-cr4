@@ -23,6 +23,12 @@ public class App {
         return new ModelAndView(model, layout);
       }, new VelocityTemplateEngine());
 
+    get("/bands/new", (request, response) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      model.put("template", "templates/band-form.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
+
     get("/bands/:id", (request, reponse) -> {
       Map<String, Object> model = new HashMap<String, Object>();
       Band band = Band.find(Integer.parseInt(request.params(":id")));
@@ -31,8 +37,16 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
+    post("/bands/:id", (request, response) -> {
+      String name = request.queryParams("name");
+      Band newBand = new Band(name);
+      newBand.save();
+      response.redirect("/bands/" + newBand.getId());
+      return null;
+    });
 
 
-    
+
+
   }
 }

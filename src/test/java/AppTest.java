@@ -44,4 +44,11 @@ public class AppTest extends FluentTest {
     assertThat(pageSource()).contains("People Under The Stairs");
   }
 
+  @Test
+  public void bandFormIsDisplayed() {
+    goTo("http://localhost:4567/");
+    click("a", withText("Add New Band"));
+    assertThat(pageSource()).contains("Add New Band");
+  }
+
 }
