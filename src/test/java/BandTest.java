@@ -86,6 +86,4 @@ public class BandTest {
     assertEquals(0, savedVenues.size());
   }
 
-
-
 }
