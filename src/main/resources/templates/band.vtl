@@ -19,10 +19,11 @@
 
       #if ($band.getVenues().size() !=0)
         <h2>$band.getName() has killed it at these venues:</h2>
-        #foreach ($venue in $venues)
+      #foreach ($venue in $venues)
         <a href="/venues/$venue.getId()">$venue.getName()</a>
         <br>
-        #end
+      #end
+      
       #else
         <h2>No Venues Added Yet</h2>
       #end

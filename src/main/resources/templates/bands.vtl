@@ -1,8 +1,10 @@
 <h1>All Bands</h1>
 
 #foreach ($band in $bands)
+<ul>
   <a href="/bands/$band.getId()">$band.getName()</a>
-  
+</ul>
+
 #end
 
 <a href="/" class="btn btn-info">Home</a>

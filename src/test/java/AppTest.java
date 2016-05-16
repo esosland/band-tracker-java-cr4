@@ -93,4 +93,13 @@ public class AppTest extends FluentTest {
     assertThat(pageSource().contains("All Venues"));
   }
 
+
+  @Test
+  public void individualVenuePageIsDisplayed() {
+    Venue testVenue = new Venue("The Palladium");
+    testVenue.save();
+    String url = String.format("http://localhost:4567/venues/%d", testVenue.getId());
+    goTo(url);
+    assertThat(pageSource()).contains("The Palladium");
+  }
 }

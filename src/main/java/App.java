@@ -81,11 +81,13 @@ public class App {
       return new ModelAndView(model, layout);
     }, new VelocityTemplateEngine());
 
-
-
-
-
-
-
+    get("/venues/:id", (request, reponse) -> {
+      Map<String, Object> model = new HashMap<String, Object>();
+      Venue venue = Venue.find(Integer.parseInt(request.params(":id")));
+      model.put("venue", venue);
+      model.put("bands", venue.getBands());
+      model.put("template", "templates/venue.vtl");
+      return new ModelAndView(model, layout);
+    }, new VelocityTemplateEngine());
   }
 }
