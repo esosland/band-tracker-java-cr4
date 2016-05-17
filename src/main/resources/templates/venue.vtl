@@ -3,12 +3,22 @@
 #if ($venue.getBands().size() != 0)
   <h2>Bands that have played at $venue.getName():</h2>
 #foreach ($band in $bands)
-  <a href="/bands/$band.getId()">$band.getName()</a>
+  <ul>
+    <a href="/bands/$band.getId()">$band.getName()</a>
+  </ul>
 #end
 
 #else
   <h2>No bands have played at $venue.getName() yet</h2>
 #end
+
+<!-- <form action="/bands/$band.getId()" method="post">
+  <label for="name">Add Band To Venue:</label>
+  <input id="name" name="name" type="text" required>
+
+  <button type="submit" class="btn btn-success">Add Band</button>
+</form> -->
+
 
 <br>
 <a href="/" class="btn btn-info">Home</a>
